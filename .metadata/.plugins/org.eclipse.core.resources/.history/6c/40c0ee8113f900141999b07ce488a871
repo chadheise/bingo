@@ -1,7 +1,0 @@
-package bingo.interfaces;
-
-public interface Output<T> {
-
-	void output(T object);
-	
-}

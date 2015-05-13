@@ -1,7 +1,0 @@
-package bingo.output;
-
-import java.util.Collection;
-
-public interface SimulationOutput extends Output<Collection<SimulationResults>> {
-
-}

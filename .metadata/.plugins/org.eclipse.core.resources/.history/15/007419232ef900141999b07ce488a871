@@ -1,9 +1,0 @@
-package bingo.interfaces;
-
-import bingo.card.Card;
-
-public interface CardFactory {
-
-	Card createCard();
-	
-}

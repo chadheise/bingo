@@ -1,7 +1,0 @@
-package bingo;
-
-import bingo.interfaces.ColumnFactory;
-
-public class ColumnFactoryImpl implements ColumnFactory {
-
-}

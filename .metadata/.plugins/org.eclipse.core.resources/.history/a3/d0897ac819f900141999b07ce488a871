@@ -1,7 +1,0 @@
-package bingo.interfaces;
-
-import java.util.Collection;
-
-public interface MultiSimulationResultsOutput extends Output<Collection<SimulationResults>> {
-
-}

@@ -1,7 +1,0 @@
-package bingo.simulations;
-
-import bingo.interfaces.SimulationResults;
-
-public class SimulationResultsImpl implements SimulationResults {
-
-}

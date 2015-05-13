@@ -1,7 +1,0 @@
-package bingo.simulations;
-
-import java.util.Comparator;
-
-public class SimulationResutlsComparator implements Comparator<T> {
-
-}

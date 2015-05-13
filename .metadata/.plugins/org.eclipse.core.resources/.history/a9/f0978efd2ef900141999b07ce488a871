@@ -1,5 +1,0 @@
-package bingo.simulation;
-
-public interface Simulation {
-
-}
