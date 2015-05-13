@@ -1,0 +1,11 @@
+package bingo.interfaces;
+
+import java.util.Collection;
+
+public interface GameResults {
+
+	Collection<Card> getWinningCards();
+	
+	int numCalls();
+	
+}

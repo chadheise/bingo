@@ -1,0 +1,13 @@
+package bingo.simulation;
+
+import java.util.Map;
+
+public class SimulationImpl implements Simulation {
+
+	@Override
+	public Map<Integer, Integer> runSimulation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

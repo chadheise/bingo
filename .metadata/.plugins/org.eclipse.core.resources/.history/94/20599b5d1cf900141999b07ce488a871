@@ -1,0 +1,15 @@
+package bingo.output;
+
+import java.util.Map;
+
+import bingo.interfaces.FrequenciesOutput;
+
+public class FrequenciesHistogramOutput implements FrequenciesOutput {
+
+	@Override
+	public void output(Map<Integer, Integer> object) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

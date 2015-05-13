@@ -1,0 +1,34 @@
+package bingo;
+
+import bingo.interfaces.Space;
+
+public class SpaceImpl implements Space {
+
+	private int value;
+	private boolean isCovered = false;
+	
+	public SpaceImpl(int value) {
+		this.value = value;
+	}
+	
+	public int getValue() {
+		return value;
+	}
+	
+	public boolean isCovered() {
+		return isCovered;
+	}
+	
+	public void cover() {
+		isCovered = true;
+	}
+	
+	@Override
+	public String toString() {
+		if (value < 9) {
+			return (" " + value);
+		}
+		return value;
+	}
+	
+}

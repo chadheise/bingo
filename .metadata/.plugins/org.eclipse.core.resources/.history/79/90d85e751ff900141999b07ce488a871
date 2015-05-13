@@ -1,0 +1,67 @@
+package bingo.output;
+
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.DefaultXYDataset;
+import org.jfree.data.xy.XYDataset;
+
+import bingo.interfaces.FrequenciesOutput;
+
+public class FrequenciesHistogramOutput implements FrequenciesOutput {
+
+	@Override
+	public void output(Map<Integer, Integer> object) {
+		// TODO Auto-generated method stub
+		
+		// XYDataset dataSet = new DefaultXYDataset();
+		DefaultXYDataset dataSet = new DefaultXYDataset();
+
+		dataSet.addSeries("seriesKey", getData(object));
+		
+		ChartFactory.createHistogram("My Histogram Title",           
+		         "X Axis Label",            
+		         "Y Axis Label",
+		         dataset,
+		         PlotOrientation.VERTICAL,           
+		         false, false, false);
+		
+		CategoryDataset dataSet = new CategoryDataSet();
+		
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		dataset.
+		
+		JFreeChart histogram = ChartFactory.createBarChart(
+		         "My Histogram Title",           
+		         "X Axis Label",            
+		         "Y Axis Label",            
+		         createDataset(),          
+		         PlotOrientation.VERTICAL,           
+		         false, false, false);
+		         
+
+	}
+	
+	private static final double[][] getData(final Map<Integer, Integer> map) {
+		double[] xValues = new double[map.size()];
+		double[] yValues = new double[map.size()];
+		
+		int index = 0;
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			xValues[index] = entry.getKey();
+			yValues[index] = entry.getValue();
+		}
+		
+		double[][] data = new double[2][];
+		data[0] = xValues;
+		data[1] = yValues;
+		
+		return data;
+	}
+
+}

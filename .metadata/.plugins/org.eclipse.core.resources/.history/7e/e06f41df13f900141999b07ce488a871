@@ -1,0 +1,12 @@
+package bingo.interfaces;
+
+/**
+ * Interface for outputting SimulationResults
+ * @author chadheise
+ *
+ */
+public interface SimulationResultsOutput {
+
+	public void output(SimulationResults results);
+	
+}

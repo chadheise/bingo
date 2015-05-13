@@ -1,0 +1,72 @@
+package bingo.output;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.statistics.HistogramDataset;
+import org.jfree.data.statistics.SimpleHistogramBin;
+import org.jfree.data.statistics.SimpleHistogramDataset;
+import org.jfree.data.xy.DefaultXYDataset;
+import org.jfree.data.xy.IntervalXYDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.ui.RefineryUtilities;
+
+import bingo.interfaces.FrequenciesOutput;
+
+public class FrequenciesHistogramOutput implements FrequenciesOutput {
+
+	private static final String FILE_NAME_PREFIX = "/Users/chadheise/Documents/programming/bingo/results/pics/";
+	
+	@Override
+	public void output(Map<Integer, Integer> object) throws IOException {
+		JFreeChart histogram = ChartFactory.createHistogram(
+				"My Histogram Title", "X Axis Label", "Y Axis Label",
+				getDataset(object), PlotOrientation.VERTICAL, false, false,
+				false);
+
+		int width = 640; /* Width of the image */
+		int height = 480; /* Height of the image */
+		File file = new File(FILE_NAME_PREFIX + "myHistogram.png");
+		ChartUtilities.saveChartAsPNG(file, histogram, width, height);
+
+	}
+
+	private static final IntervalXYDataset getDataset(
+			final Map<Integer, Integer> map) {
+		SimpleHistogramDataset dataset = new SimpleHistogramDataset(
+				"mySeriesKey");
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			SimpleHistogramBin bin = new SimpleHistogramBin(entry.getKey(),
+					entry.getKey());
+			bin.setItemCount(entry.getValue());
+			dataset.addBin(bin);
+		}
+		return dataset;
+	}
+
+	private static final double[][] getData(final Map<Integer, Integer> map) {
+		double[] xValues = new double[map.size()];
+		double[] yValues = new double[map.size()];
+
+		int index = 0;
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			xValues[index] = entry.getKey();
+			yValues[index] = entry.getValue();
+		}
+
+		double[][] data = new double[2][];
+		data[0] = xValues;
+		data[1] = yValues;
+
+		return data;
+	}
+
+}

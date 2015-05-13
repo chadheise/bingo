@@ -1,0 +1,11 @@
+package bingo.interfaces;
+
+import bingo.Letter;
+
+public interface Card {
+
+	void coverSpace(int value);
+	
+	boolean isCovered(Letter letter, int row);
+	
+}

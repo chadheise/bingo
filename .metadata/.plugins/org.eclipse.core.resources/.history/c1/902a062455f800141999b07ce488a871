@@ -1,0 +1,17 @@
+package bingo.interfaces;
+
+public interface Square {
+
+	public int getValue() {
+		return value;
+	}
+	
+	public boolean isCovered() {
+		return isCovered;
+	}
+	
+	public void cover() {
+		isCovered = true;
+	}
+	
+}

@@ -1,0 +1,26 @@
+package bingo.output;
+
+import java.util.Map;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+
+import bingo.interfaces.FrequenciesOutput;
+
+public class FrequenciesHistogramOutput implements FrequenciesOutput {
+
+	@Override
+	public void output(Map<Integer, Integer> object) {
+		// TODO Auto-generated method stub
+		JFreeChart histogram = ChartFactory.createBarChart(
+		         "My Histogram Title",           
+		         "X Axis Label",            
+		         "Y Axis Label",            
+		         createDataset(),          
+		         PlotOrientation.VERTICAL,           
+		         true, true, false);
+		         
+
+	}
+
+}

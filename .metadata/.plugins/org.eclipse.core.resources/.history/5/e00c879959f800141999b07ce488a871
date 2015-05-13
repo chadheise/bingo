@@ -1,0 +1,7 @@
+package bingo.interfaces;
+
+public interface Card {
+
+	void coverSpace(int value);
+	
+}

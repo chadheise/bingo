@@ -1,0 +1,5 @@
+package bingo.output;
+
+public class CompositeOutput implements Output<T> {
+
+}

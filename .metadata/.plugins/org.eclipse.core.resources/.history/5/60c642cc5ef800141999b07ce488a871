@@ -1,0 +1,16 @@
+package bingo;
+
+import bingo.interfaces.CardFactory;
+
+public class Main {
+
+	private static final CardPrinter PRINTER = new CardPrinter();
+	privat static final WITH_COVERS = false;
+	
+	public static void main(String[] args) {
+		System.out.println("hey");
+		CardFactory cardFactory = new RandomCardFactory();
+		PRINTER.print(cardFactory.createCard(), WITH_COVERS);
+	}
+	
+}

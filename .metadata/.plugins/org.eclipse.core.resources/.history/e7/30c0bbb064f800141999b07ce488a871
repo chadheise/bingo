@@ -1,0 +1,25 @@
+package bingo.simulations;
+
+import bingo.interfaces.CardChecker;
+import bingo.interfaces.CardFactory;
+import bingo.interfaces.Simulation;
+
+public class BasicSimulation implements Simulation {
+
+	private final int numPlayers;
+	private final CardFactory cardFactory;
+	private final CardChecker checker;
+	
+	public BasicSimulation(int numPlayers, CardFactory cardFactory, CardChecker checker) {
+		this.numPlayers = numPlayers;
+		this.cardFactory = cardFactory;
+		this.checker = checker;
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

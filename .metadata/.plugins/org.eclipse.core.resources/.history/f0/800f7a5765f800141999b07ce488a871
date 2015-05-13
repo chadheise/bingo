@@ -1,0 +1,11 @@
+package bingo.interfaces;
+
+public interface Simulation {
+
+	/**
+	 * Run a simulation and return the number of calls before someone won.
+	 * @return
+	 */
+	boolean run();
+	
+}

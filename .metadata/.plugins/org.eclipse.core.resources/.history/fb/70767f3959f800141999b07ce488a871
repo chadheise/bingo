@@ -1,0 +1,21 @@
+package bingo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import bingo.FreeSpace;
+
+public class Card {
+
+	Column b;
+	Column i;
+	Column n;
+	Column g;
+	Column o;
+
+	public void BingoCard() {
+		n.add(3, new FreeSpace());
+	}
+	
+	
+}

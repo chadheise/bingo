@@ -1,0 +1,17 @@
+package bingo.simulations;
+
+import bingo.interfaces.Simulation;
+
+public class BasicSimulation implements Simulation {
+
+	public BasicSimulation(int numPlayers, CardChecker checker) {
+		
+	}
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

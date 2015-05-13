@@ -1,0 +1,53 @@
+package bingo.simulations;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+import bingo.interfaces.Caller;
+import bingo.interfaces.Card;
+import bingo.interfaces.CardChecker;
+import bingo.interfaces.CardFactory;
+import bingo.interfaces.Simulation;
+
+public class BasicSimulation implements Simulation {
+
+	private final int numPlayers;
+	private final CardFactory cardFactory;
+	private final Caller caller;
+	private final CardChecker checker;
+	
+	public BasicSimulation(int numPlayers, CardFactory cardFactory, Caller caller, CardChecker checker) {
+		this.numPlayers = numPlayers;
+		this.cardFactory = cardFactory;
+		this.caller = caller;
+		this.checker = checker;
+	}
+	
+	@Override
+	public void run() {
+		Collection<Card> cardsInPlay = new HashSet<Card>();
+		for (int i=0; i < numPlayers; i++) {
+			cardsInPlay.add(cardFactory.createCard());
+		}
+		
+		int calls = 0;
+		while(!winnerFound()) {
+			coverSpaces(cardsInPlay, caller.nextNumber());
+			calls++;
+		}
+		
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private boolean winnerFound() {
+		
+	}
+	
+	private void coverSpaces(Collection<Card> cards, int value) {
+		for (Card card : cards) {
+			card.coverSpace(value);
+		}
+	}
+
+}

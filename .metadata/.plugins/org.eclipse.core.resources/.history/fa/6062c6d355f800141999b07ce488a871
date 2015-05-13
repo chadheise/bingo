@@ -1,0 +1,7 @@
+package bingo.interfaces;
+
+public interface ColumnFactory {
+
+	List<Square> getColumn(boolean hasFreeSpace);
+	
+}

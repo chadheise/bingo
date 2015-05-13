@@ -1,0 +1,14 @@
+package bingo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import bingo.interfaces.Square;
+
+public class ColumnImpl implements Column {
+
+	List<Square> spaces = new ArrayList<Square>(5);
+
+	
+	
+}

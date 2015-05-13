@@ -1,0 +1,7 @@
+package bingo.interfaces;
+
+public interface Simulation {
+
+	void run();
+	
+}

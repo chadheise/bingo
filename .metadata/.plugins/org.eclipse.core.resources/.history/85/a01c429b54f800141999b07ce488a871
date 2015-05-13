@@ -1,0 +1,11 @@
+package bingo;
+
+public class Square {
+
+	private final int value;
+	
+	public void Square(int value) {
+		this.value = value;
+	}
+	
+}

@@ -1,0 +1,45 @@
+package bingo.simulation;
+
+import bingo.caller.Caller;
+import bingo.card.CardFactory;
+import bingo.checkers.CardChecker;
+
+public class RandomSimulationConfig implements SimulationConfig {
+
+	private final int numGames;
+	private final int numPlayers;
+	
+	public RandomSimulationConfig(int numGames, int numPlayers) {
+		this.numGames = numGames;
+		this.numPlayers = numPlayers;
+	}
+	
+	@Override
+	public int getNumGames() {
+		return numGames;
+	}
+
+	@Override
+	public int getNumPlayers() {
+		return numPlayers;
+	}
+
+	@Override
+	public CardFactory getCardFactory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Caller getCaller() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CardChecker getCardChecker() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

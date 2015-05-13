@@ -1,0 +1,27 @@
+package bingo;
+
+import java.util.Collection;
+
+import bingo.interfaces.Card;
+import bingo.interfaces.Caller;
+import bingo.interfaces.CardFactory;
+import bingo.utils.CardPrinter;
+
+public class Main {
+
+	private static final CardPrinter PRINTER = new CardPrinter();
+	private static final boolean WITH_COVERS = false;
+	
+	public static void main(String[] args) {
+		CardFactory cardFactory = new RandomCardFactory();
+		PRINTER.print(cardFactory.createCard(), WITH_COVERS);
+		
+		Collection<Card> cardsInPlay = new HashSet<Card>();
+		
+		Caller caller = new RandomCaller();
+		for (int i = 0; i < 20; i++) {
+			caller.nextNumber()
+		}
+	}
+	
+}

@@ -1,0 +1,16 @@
+package bingo;
+
+public class Square {
+
+	private int value;
+	private boolean isCovered = false;
+	
+	public void Square(int value) {
+		this.value = value;
+	}
+	
+	public int getValue() {
+		return value;
+	}
+	
+}

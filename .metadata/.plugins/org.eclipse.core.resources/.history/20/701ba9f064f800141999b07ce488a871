@@ -1,0 +1,41 @@
+package bingo.simulations;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+import bingo.interfaces.Card;
+import bingo.interfaces.CardChecker;
+import bingo.interfaces.CardFactory;
+import bingo.interfaces.Simulation;
+
+public class BasicSimulation implements Simulation {
+
+	private final int numPlayers;
+	private final CardFactory cardFactory;
+	private final CardChecker checker;
+	
+	public BasicSimulation(int numPlayers, CardFactory cardFactory, CardChecker checker) {
+		this.numPlayers = numPlayers;
+		this.cardFactory = cardFactory;
+		this.checker = checker;
+	}
+	
+	@Override
+	public void run() {
+		Collection<Card> cardsInPlay = new HashSet<Card>();
+		for (int i=0; i < numPlayers; i++) {
+			cardsInPlay.add(cardFactory.createCard());
+		}
+		
+		int calls = 0;
+
+		
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private boolean winnerFound() {
+		
+	}
+
+}

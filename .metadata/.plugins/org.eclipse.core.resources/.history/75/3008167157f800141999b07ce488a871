@@ -1,0 +1,20 @@
+package bingo;
+
+public enum Letter {
+
+	B(0, 15),
+	I(15, 30),
+	N(30, 45),
+	G(45, 60),
+	O(60, 75);
+	
+	int rangeStart;
+	int rangeEnd;
+	
+	Letter(int rangeStart, int rangeEnd) {
+		this.rangeStart = rangeStart;
+		this.rangeEnd = rangeEnd;
+	}
+	
+	
+}

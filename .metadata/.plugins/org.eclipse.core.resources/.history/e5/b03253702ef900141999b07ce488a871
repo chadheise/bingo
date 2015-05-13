@@ -1,0 +1,10 @@
+package bingo.card;
+
+import bingo.card.Letter;
+
+
+public interface ColumnFactory {
+
+	Column createColumn(Letter letter);
+	
+}

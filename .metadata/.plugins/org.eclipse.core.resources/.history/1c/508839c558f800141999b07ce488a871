@@ -1,0 +1,51 @@
+package bingo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import bingo.interfaces.Column;
+import bingo.interfaces.ColumnFactory;
+import bingo.interfaces.Space;
+
+public class ColumnFactoryImpl implements ColumnFactory {
+
+	private static final int COLUMN_LENGTH = 5;
+	private static final Random random = new Random();
+	
+	
+	@Override
+	public List<Space> createColumn(Letter letter) {
+		List<Space> spaces = new ArrayList<Space>();
+		for (int i=0; i < COLUMN_LENGTH; i++) {
+			Space space;
+			if (Letter.O.equals(letter) && i == (COLUMN_LENGTH - 1)/2) {
+				space = new FreeSpace();
+			}
+			else { 
+				int value = letter.rangeStart() + random.nextInt(letter.rangeEnd() - letter.rangeStart());
+				space = new SpaceImpl(value);
+			}
+			
+			
+		}
+		
+		
+	}
+
+	private class ColumnImpl implements Column {
+
+		private List<Space> spaces = new ArrayList<Space>(5);
+
+		@Override
+		public boolean isCoveredAtIndex(int i) {
+			return spaces.get(i).isCovered();
+		}
+		
+		private setSpace(int index, int value) {
+			spaces.a
+		}
+		
+	}
+	
+}

@@ -1,0 +1,13 @@
+package bingo.interfaces;
+
+import java.util.Collection;
+
+public interface SimulationResults {
+
+	Collection<Card> getWinningCards();
+	
+	int numCalls();
+	
+	
+	
+}

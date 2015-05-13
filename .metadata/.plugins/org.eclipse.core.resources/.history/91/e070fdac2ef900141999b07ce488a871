@@ -1,0 +1,11 @@
+package bingo.card;
+
+public interface Space {
+
+	int getValue();
+	
+	boolean isCovered();
+	
+	void cover();
+	
+}

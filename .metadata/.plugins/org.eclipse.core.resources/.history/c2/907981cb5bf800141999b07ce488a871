@@ -1,0 +1,8 @@
+package bingo.interfaces;
+
+public interface Column {
+
+	boolean isCoveredAtIndex(int i);
+	
+	void cover(int value);
+}

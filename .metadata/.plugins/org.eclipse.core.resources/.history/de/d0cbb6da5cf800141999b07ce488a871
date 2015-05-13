@@ -1,0 +1,12 @@
+package bingo;
+
+import bingo.interfaces.Card;
+
+public class CardPrinter {
+
+	void print(Card card) {
+		System.out.println("B  I  N  G  O  ");
+		
+	}
+	
+}

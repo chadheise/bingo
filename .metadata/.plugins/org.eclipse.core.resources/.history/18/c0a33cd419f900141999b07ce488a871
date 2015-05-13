@@ -1,0 +1,7 @@
+package bingo.interfaces;
+
+import java.util.Collection;
+
+public interface MultiSimulationResultsOutput extends Output<Map<Integer, Integer>> {
+
+}

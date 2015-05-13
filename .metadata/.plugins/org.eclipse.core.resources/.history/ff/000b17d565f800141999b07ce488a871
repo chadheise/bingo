@@ -1,0 +1,26 @@
+package bingo;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+import bingo.checkers.BlackoutChecker;
+import bingo.interfaces.Card;
+import bingo.interfaces.Caller;
+import bingo.interfaces.CardChecker;
+import bingo.interfaces.CardFactory;
+import bingo.utils.CardPrinter;
+
+public class Main {
+
+	private static final CardPrinter PRINTER = new CardPrinter();
+	private static final boolean WITH_COVERS = true;
+	
+	public static void main(String[] args) {
+		CardFactory cardFactory = new RandomCardFactory();
+		Caller caller = new RandomCaller();
+		CardChecker checker = new BlackoutChecker();
+		
+		Simulation simulation = new BasicSimulation(1, cardFactory, caller, )
+	}
+	
+}

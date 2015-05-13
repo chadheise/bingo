@@ -1,0 +1,8 @@
+package bingo.interfaces;
+
+
+public interface CardFactory {
+
+	Card createCard();
+	
+}

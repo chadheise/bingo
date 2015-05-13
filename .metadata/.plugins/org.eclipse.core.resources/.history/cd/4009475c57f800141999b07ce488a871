@@ -1,0 +1,11 @@
+package bingo;
+
+public enum Letter {
+
+	B,
+	I,
+	N,
+	G,
+	O,
+	
+}

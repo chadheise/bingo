@@ -1,0 +1,25 @@
+package bingo;
+
+import bingo.interfaces.Square;
+
+public class FreeSpace implements Square {
+
+	@Override
+	public int getValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isCovered() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void cover() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

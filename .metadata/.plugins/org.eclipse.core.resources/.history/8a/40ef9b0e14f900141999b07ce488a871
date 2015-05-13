@@ -1,0 +1,7 @@
+package bingo.output;
+
+import bingo.interfaces.Output;
+
+public interface SimulationOutput implements Output<Collection<SimulationResult>> {
+
+}

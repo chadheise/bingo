@@ -1,0 +1,11 @@
+package bingo.interfaces;
+
+import java.util.List;
+
+import bingo.Letter;
+
+public interface ColumnFactory {
+
+	List<Square> createColumn(Letter letter);
+	
+}

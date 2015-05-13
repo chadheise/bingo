@@ -1,0 +1,28 @@
+package bingo.simulations;
+
+import java.util.Collection;
+
+import bingo.interfaces.Card;
+import bingo.interfaces.SimulationResults;
+
+public class SimulationResultsImpl implements SimulationResults {
+
+	Collection<Card> winningCards;
+	
+	public void Collection<Card> setWinningCards(Collection<Card> cards) {
+		winningCards = cards;
+	}
+	
+	@Override
+	public Collection<Card> getWinningCards() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int numCalls() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

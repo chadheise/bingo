@@ -1,0 +1,7 @@
+package bingo.interfaces;
+
+public interface CardChecker {
+
+	boolean hasWon(Card card);
+	
+}

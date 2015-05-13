@@ -1,0 +1,13 @@
+package bingo.simulations;
+
+import bingo.interfaces.Simulation;
+
+public class BasicSimulation implements Simulation {
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

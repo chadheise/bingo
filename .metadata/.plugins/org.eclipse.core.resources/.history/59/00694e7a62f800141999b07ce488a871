@@ -1,0 +1,13 @@
+package bingo;
+
+import bingo.interfaces.Caller;
+
+public class RandomCaller implements Caller {
+
+	@Override
+	public int nextNumber() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

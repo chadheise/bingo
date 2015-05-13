@@ -1,0 +1,66 @@
+package bingo;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
+
+import bingo.checkers.BlackoutChecker;
+import bingo.interfaces.Caller;
+import bingo.interfaces.CardChecker;
+import bingo.interfaces.CardFactory;
+import bingo.interfaces.Simulation;
+import bingo.simulations.BasicSimulation;
+
+public class Main {
+
+	public static final int NUM_SIMULATIONS = 100000;
+	public static final String FILE_NAME_PREFIX = "/Users/chadheise/Documents/programming/bingo/results/simulation_";
+	public static final String FILE_EXTENSION = ".csv";
+	
+	public static void main(String[] args) throws IOException {
+		CardFactory cardFactory = new RandomCardFactory();
+		CardChecker checker = new BlackoutChecker();
+		
+		// For each number of players
+		for (int numPlayers=1; numPlayers<=5; numPlayers++) {
+			// Run simulations
+			
+			// Maps the number of calls before someone wins to the number of simulations where that was the case
+			Map<Integer, Integer> results = new TreeMap<Integer, Integer>();
+			
+			for (int i=0; i < NUM_SIMULATIONS; i++) {
+				Caller caller = new RandomCaller();
+				Simulation simulation = new BasicSimulation(30, cardFactory, caller, checker);
+				int callsBeforeWinner = simulation.run();
+				if (results.containsKey(callsBeforeWinner)) {
+					results.put(callsBeforeWinner, results.get(callsBeforeWinner) + 1);
+				}
+				else {
+					results.put(callsBeforeWinner, 1);
+				}
+				String filePath = FILE_NAME_PREFIX + numPlayers + FILE_EXTENSION;
+				outputResults(results, filePath);
+			}
+			System.out.println("Done with simulation " + numPlayers);
+		}
+
+	}
+	
+	private static final void outputResults(Map<Integer, Integer> results, String filePath) throws IOException {
+		OutputStream outputStream = new FileOutputStream(filePath);
+
+		for (Entry<Integer, Integer> entry : results.entrySet()) {
+			String outputLine = entry.getKey() + "," + entry.getValue() + "\n";
+			outputStream.write(outputLine.getBytes());
+		}
+		
+		outputStream.close();
+		
+	}
+	
+}

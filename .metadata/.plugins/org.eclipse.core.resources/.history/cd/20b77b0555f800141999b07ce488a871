@@ -1,0 +1,20 @@
+package bingo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Card {
+
+	List<Square> b = new ArrayList<Square>(5);
+	List<Square> i = new ArrayList<Square>(5);
+	List<Square> n = new ArrayList<Square>(5);
+	List<Square> g = new ArrayList<Square>(5);
+	List<Square> o = new ArrayList<Square>(5);
+
+
+	public void BingoCard() {
+		
+	}
+	
+	
+}

@@ -1,0 +1,9 @@
+package bingo.interfaces;
+
+import java.util.List;
+
+public interface ColumnFactory {
+
+	List<Square> createColumn(boolean hasFreeSpace);
+	
+}

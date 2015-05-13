@@ -1,0 +1,24 @@
+package bingo;
+
+import java.util.Collections;
+import java.util.LinkedList;
+
+import bingo.interfaces.Caller;
+
+public class RandomCaller implements Caller {
+	
+	private LinkedList<Integer> notCalled = new LinkedList<Integer>();
+	
+	public RandomCaller() {
+		for (int i = Letter.B.rangeStart(); i < Letter.O.rangeEnd(); i++) {
+			notCalled.add(i);
+		}
+		Collections.shuffle(notCalled);
+	}
+	
+	@Override
+	public int nextNumber() {
+		return notCalled.pop();
+	}
+
+}

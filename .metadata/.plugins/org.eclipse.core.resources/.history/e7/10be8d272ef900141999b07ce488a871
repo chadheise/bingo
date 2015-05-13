@@ -1,0 +1,11 @@
+package bingo.interfaces;
+
+public interface Space {
+
+	int getValue();
+	
+	boolean isCovered();
+	
+	void cover();
+	
+}
