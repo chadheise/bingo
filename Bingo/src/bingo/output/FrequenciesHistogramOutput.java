@@ -21,6 +21,7 @@ public class FrequenciesHistogramOutput implements FrequenciesOutput {
 	private static final boolean INCLUDE_UPPER_BOUND = true;
 	private static final String X_AXIS_LABEL = "Number of Calls Before a Blackout";
 	private static final String Y_AXIS_LABEL = "Number of Games";
+	private static final double Y_AXIS_PERCENT = 0.35;
 	
 	private final String outputFilePath;
 	private final String title;
@@ -42,6 +43,7 @@ public class FrequenciesHistogramOutput implements FrequenciesOutput {
 				false);
 
 		histogram.getXYPlot().getDomainAxis().setRange(40, 75);
+		histogram.getXYPlot().getRangeAxis().setRange(0, Y_AXIS_PERCENT*getTotal(object));
 		
 		File file = new File(outputFilePath);
 		ChartUtilities.saveChartAsPNG(file, histogram, width, height);
@@ -59,22 +61,14 @@ public class FrequenciesHistogramOutput implements FrequenciesOutput {
 		}
 		return dataset;
 	}
-
-	private static final double[][] getData(final Map<Integer, Integer> map) {
-		double[] xValues = new double[map.size()];
-		double[] yValues = new double[map.size()];
-
-		int index = 0;
+	
+	// TODO: Do this as a lambda
+	private static final int getTotal(final Map<Integer, Integer> map) {
+		int total = 0;
 		for (Entry<Integer, Integer> entry : map.entrySet()) {
-			xValues[index] = entry.getKey();
-			yValues[index] = entry.getValue();
+			total += entry.getValue();
 		}
-
-		double[][] data = new double[2][];
-		data[0] = xValues;
-		data[1] = yValues;
-
-		return data;
+		return total;
 	}
 
 }
