@@ -36,6 +36,10 @@ public class PDFOutput implements Output<Card> {
     private static final int LINE_WIDTH = 2;
     private static final int OUTER_BOX_WIDTH = 100;
     private static final int INNER_BOX_WIDTH = OUTER_BOX_WIDTH - LINE_WIDTH;
+    private static final int OFFSET_X = (PAGE_WIDTH - Letter.values().length * OUTER_BOX_WIDTH) / 2;
+    private static final int OFFSET_Y = (PAGE_HEIGHT - OUTER_BOX_WIDTH - Letter.values().length * OUTER_BOX_WIDTH) / 2;
+    private static final int FONT_SIZE = 50;
+    private static final int OFFSET_FONT = (INNER_BOX_WIDTH - FONT_SIZE) / 2;
 
     @Override
     public void output(Card card) throws IOException {
@@ -48,22 +52,16 @@ public class PDFOutput implements Output<Card> {
 
         PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-        contentStream.beginText();
-        contentStream.setFont(PDType1Font.HELVETICA, 44);
+        createGrid(contentStream, card.numRows(), Letter.values().length);
 
-        contentStream.newLineAtOffset(25, 700);
-        contentStream.setLeading(46.5f);
-        contentStream.showText(" B  I  N  G  O ");
-        contentStream.newLine();
+        contentStream.setFont(PDType1Font.HELVETICA, FONT_SIZE);
+        contentStream.setNonStrokingColor(Color.black);
+
+        printHeader(contentStream);
 
         for (int i = 0; i < card.numRows(); i++) {
-            contentStream.showText(getRow(card, i));
-            contentStream.newLine();
+            printRow(contentStream, card, i);
         }
-
-        contentStream.endText();
-
-        createGrid(contentStream, card.numRows(), 5);
 
         contentStream.close();
 
@@ -72,26 +70,41 @@ public class PDFOutput implements Output<Card> {
         document.close();
     }
 
-    private String getRow(Card card, int row) {
-        StringBuilder builder = new StringBuilder();
+    private void printHeader(PDPageContentStream stream) throws IOException {
+        int offsetY = PAGE_HEIGHT - OFFSET_Y;
+        int i = 0;
         for (Letter letter : Letter.values()) {
-            builder.append(card.getSpace(letter, row));
-            builder.append(" ");
-
+            int offsetX = OFFSET_X + OUTER_BOX_WIDTH * i;
+            stream.beginText();
+            stream.newLineAtOffset(offsetX + OFFSET_FONT, offsetY + OFFSET_FONT);
+            stream.showText(letter.name().toString());
+            stream.endText();
+            i++;
         }
-        return builder.toString();
+    }
+
+    private void printRow(PDPageContentStream stream, Card card, int row) throws IOException {
+        int offsetY = PAGE_HEIGHT - OFFSET_Y - OUTER_BOX_WIDTH - OUTER_BOX_WIDTH * row;
+        int i = 0;
+        for (Letter letter : Letter.values()) {
+            int offsetX = OFFSET_X + OUTER_BOX_WIDTH * i;
+            stream.beginText();
+            stream.newLineAtOffset(offsetX + OFFSET_FONT, offsetY + OFFSET_FONT);
+            stream.showText(card.getSpace(letter, row).toString());
+            stream.endText();
+            i++;
+        }
+
     }
 
     private void createGrid(PDPageContentStream stream, int numRows, int numCols) throws IOException {
-        // Setting the non stroking color
         stream.setNonStrokingColor(Color.white);
         stream.setStrokingColor(Color.black);
         stream.setLineWidth(LINE_WIDTH);
 
-        int offsetXDefault = 25;
-        int offsetY = PAGE_HEIGHT - OUTER_BOX_WIDTH - 25;
+        int offsetY = PAGE_HEIGHT - OFFSET_Y - OUTER_BOX_WIDTH;
         for (int i = 0; i < numRows; i++) {
-            int offsetX = offsetXDefault;
+            int offsetX = OFFSET_X;
             for (int j = 0; j < numCols; j++) {
                 stream.addRect(offsetX, offsetY,
                         INNER_BOX_WIDTH, INNER_BOX_WIDTH);
