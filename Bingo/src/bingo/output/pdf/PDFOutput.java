@@ -19,6 +19,7 @@ package bingo.output.pdf;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.function.Function;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -27,9 +28,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import bingo.card.Card;
 import bingo.card.Letter;
-import bingo.output.Output;
 
-public class PDFOutput implements Output<Card> {
+public class PDFOutput implements Function<Card, PDPage> {
 
     private static final int PAGE_HEIGHT = 792;
     private static final int PAGE_WIDTH = 612;
@@ -41,33 +41,37 @@ public class PDFOutput implements Output<Card> {
     private static final int FONT_SIZE = 50;
     private static final int OFFSET_FONT = (INNER_BOX_WIDTH - FONT_SIZE) / 2;
 
-    @Override
-    public void output(Card card) throws IOException {
-        PDDocument document = new PDDocument();
+    private final PDDocument document;
 
-        document.getDocumentInformation().setTitle("Bingo Cards");
+    public PDFOutput(PDDocument document) {
+        this.document = document;
+    }
+
+    @Override
+    public PDPage apply(final Card card) {
 
         PDPage page = new PDPage();
-        document.addPage(page);
 
-        PDPageContentStream contentStream = new PDPageContentStream(document, page);
+        PDPageContentStream contentStream;
+        try {
+            contentStream = new PDPageContentStream(document, page);
 
-        createGrid(contentStream, card.numRows(), Letter.values().length);
+            createGrid(contentStream, card.numRows(), Letter.values().length);
 
-        contentStream.setFont(PDType1Font.HELVETICA, FONT_SIZE);
-        contentStream.setNonStrokingColor(Color.black);
+            contentStream.setFont(PDType1Font.HELVETICA, FONT_SIZE);
+            contentStream.setNonStrokingColor(Color.black);
 
-        printHeader(contentStream);
+            printHeader(contentStream);
 
-        for (int i = 0; i < card.numRows(); i++) {
-            printRow(contentStream, card, i);
+            for (int i = 0; i < card.numRows(); i++) {
+                printRow(contentStream, card, i);
+            }
+
+            contentStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-        contentStream.close();
-
-        document.save("/Users/chadheise/Documents/programming/bingo/results/pdfs/file.pdf");
-
-        document.close();
+        return page;
     }
 
     private void printHeader(PDPageContentStream stream) throws IOException {
