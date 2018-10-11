@@ -17,6 +17,7 @@
 
 package bingo.output.pdf;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -29,6 +30,12 @@ import bingo.card.Letter;
 import bingo.output.Output;
 
 public class PDFOutput implements Output<Card> {
+
+    private static final int PAGE_HEIGHT = 792;
+    private static final int PAGE_WIDTH = 612;
+    private static final int LINE_WIDTH = 2;
+    private static final int OUTER_BOX_WIDTH = 100;
+    private static final int INNER_BOX_WIDTH = OUTER_BOX_WIDTH - LINE_WIDTH;
 
     @Override
     public void output(Card card) throws IOException {
@@ -55,6 +62,9 @@ public class PDFOutput implements Output<Card> {
         }
 
         contentStream.endText();
+
+        createGrid(contentStream, card.numRows(), 5);
+
         contentStream.close();
 
         document.save("/Users/chadheise/Documents/programming/bingo/results/pdfs/file.pdf");
@@ -70,6 +80,27 @@ public class PDFOutput implements Output<Card> {
 
         }
         return builder.toString();
+    }
+
+    private void createGrid(PDPageContentStream stream, int numRows, int numCols) throws IOException {
+        // Setting the non stroking color
+        stream.setNonStrokingColor(Color.white);
+        stream.setStrokingColor(Color.black);
+        stream.setLineWidth(LINE_WIDTH);
+
+        int offsetXDefault = 25;
+        int offsetY = PAGE_HEIGHT - OUTER_BOX_WIDTH - 25;
+        for (int i = 0; i < numRows; i++) {
+            int offsetX = offsetXDefault;
+            for (int j = 0; j < numCols; j++) {
+                stream.addRect(offsetX, offsetY,
+                        INNER_BOX_WIDTH, INNER_BOX_WIDTH);
+                stream.fillAndStroke();
+                offsetX += OUTER_BOX_WIDTH;
+            }
+            offsetY -= OUTER_BOX_WIDTH;
+        }
+
     }
 
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-  <classpathentry kind="src" path="src" including="**/*.java"/>
-  <classpathentry kind="output" path="target/classes"/>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="var" path="M2_REPO/org/jfree/jfreechart/1.0.19/jfreechart-1.0.19.jar" sourcepath="M2_REPO/org/jfree/jfreechart/1.0.19/jfreechart-1.0.19-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/jfree/jcommon/1.0.23/jcommon-1.0.23.jar" sourcepath="M2_REPO/org/jfree/jcommon/1.0.23/jcommon-1.0.23-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/pdfbox/pdfbox/2.0.12/pdfbox-2.0.12.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/pdfbox/fontbox/2.0.12/fontbox-2.0.12.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+	<classpathentry including="**/*.java" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="M2_REPO/org/jfree/jfreechart/1.0.19/jfreechart-1.0.19.jar" sourcepath="M2_REPO/org/jfree/jfreechart/1.0.19/jfreechart-1.0.19-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jfree/jcommon/1.0.23/jcommon-1.0.23.jar" sourcepath="M2_REPO/org/jfree/jcommon/1.0.23/jcommon-1.0.23-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/pdfbox/pdfbox/2.0.12/pdfbox-2.0.12.jar" sourcepath="/M2_REPO"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/pdfbox/fontbox/2.0.12/fontbox-2.0.12.jar"/>
+	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
