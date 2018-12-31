@@ -10,3 +10,7 @@ Bingo/RemoteSystemsTempFiles/
 Bingo/bin/
 Bingo/.settings/org.eclipse.m2e.core.prefs
 Bingo/target/
+sosoBingoKeys.csv
+sosoNames.txt
+sosoImages/*
+Bingo/src/bingo/soso/*
